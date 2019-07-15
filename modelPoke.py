@@ -8,7 +8,7 @@ pokemon = pokemon.drop(['Type 1','Type 2','Generation','Legendary'],axis = 1)
 
 combats = pd.read_csv('combats.csv')
 
-pokemon['total'] = pokemon['HP'] + pokemon['Attack'] + pokemon['Defense'] + pokemon['Sp. Atk'] + pokemon['Sp. Def'] + pokemon['Speed']
+pokemon['result'] = pokemon['HP'] + pokemon['Attack'] + pokemon['Defense'] + pokemon['Sp. Atk'] + pokemon['Sp. Def'] + pokemon['Speed']
 
 name_dict = dict(zip(pokemon['#'], pokemon['Name']))
 hp_dict = dict(zip(pokemon['#'], pokemon['HP']))
@@ -17,7 +17,7 @@ defense_dict = dict(zip(pokemon['#'], pokemon['Defense']))
 spattack_dict = dict(zip(pokemon['#'], pokemon['Sp. Atk']))
 spdefense_dict = dict(zip(pokemon['#'], pokemon['Sp. Def']))
 speed_dict = dict(zip(pokemon['#'], pokemon['Speed']))
-total_dict = dict(zip(pokemon['#'], pokemon['total']))
+result_dict = dict(zip(pokemon['#'], pokemon['result']))
 
 dfcombats = combats.copy()
 
@@ -28,7 +28,7 @@ dfcombats['First_pokemon_defense'] = dfcombats['First_pokemon'].replace(defense_
 dfcombats['First_pokemon_spattack'] = dfcombats['First_pokemon'].replace(spattack_dict)
 dfcombats['First_pokemon_spdefense'] = dfcombats['First_pokemon'].replace(spdefense_dict)
 dfcombats['First_pokemon_speed'] = dfcombats['First_pokemon'].replace(speed_dict)
-dfcombats['First_pokemon_total'] = dfcombats['First_pokemon'].replace(total_dict)
+dfcombats['First_pokemon_result'] = dfcombats['First_pokemon'].replace(result_dict)
 
 dfcombats['Second_pokemon_name'] = dfcombats['Second_pokemon'].replace(name_dict)
 dfcombats['Second_pokemon_hp'] = dfcombats['Second_pokemon'].replace(hp_dict)
@@ -37,7 +37,7 @@ dfcombats['Second_pokemon_defense'] = dfcombats['Second_pokemon'].replace(defens
 dfcombats['Second_pokemon_spattack'] = dfcombats['Second_pokemon'].replace(spattack_dict)
 dfcombats['Second_pokemon_spdefense'] = dfcombats['Second_pokemon'].replace(spdefense_dict)
 dfcombats['Second_pokemon_speed'] = dfcombats['Second_pokemon'].replace(speed_dict)
-dfcombats['Second_pokemon_total'] = dfcombats['Second_pokemon'].replace(total_dict)
+dfcombats['Second_pokemon_result'] = dfcombats['Second_pokemon'].replace(result_dict)
 
 dfcombats['First_win'] = dfcombats.apply(
     lambda col: 1 if col['Winner'] == col['First_pokemon'] else 0, axis=1

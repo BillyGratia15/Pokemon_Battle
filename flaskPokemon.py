@@ -1,4 +1,7 @@
 import matplotlib.pyplot as plt
+import matplotlib
+matplotlib.use('Agg')
+
 import json, requests
 import pandas as pd
 import numpy as np
@@ -11,7 +14,7 @@ app = Flask(__name__)
 
 pokemon = pd.read_csv('pokemon.csv')
 combats = pd.read_csv('combats.csv')
-pokemon['total'] = pokemon['HP'] + pokemon['Attack'] + pokemon['Defense'] + pokemon['Sp. Atk'] + pokemon['Sp. Def'] + pokemon['Speed']
+pokemon['result'] = pokemon['HP'] + pokemon['Attack'] + pokemon['Defense'] + pokemon['Sp. Atk'] + pokemon['Sp. Def'] + pokemon['Speed']
 
 @app.route('/')
 @app.route('/home')
@@ -34,23 +37,23 @@ def hasil():
     elif str(data2)=='<Response [404]>':
         return render_template('error.html')
 
-    filedata1 = data1.json()['forms']
-    filedata2 = data2.json()['forms']
+    fdata1 = data1.json()['forms']
+    fdata2 = data2.json()['forms']
     
-    name1 = filedata1[0]['name'].capitalize()
-    name2 = filedata2[0]['name'].capitalize()
+    name1 = fdata1[0]['name'].capitalize()
+    name2 = fdata2[0]['name'].capitalize()
 
     picture1 = data1.json()['sprites']['front_default']
     picture2 = data2.json()['sprites']['front_default']
 
     # Prediction
     if pokemon1.capitalize() in pokemon['Name'].values and pokemon2.capitalize() in pokemon['Name'].values:
-        firstPokemon = pokemon[pokemon['Name'] == pokemon1.capitalize()][['Name' ,'HP', 'Attack', 'Defense', 'Sp. Atk', 'Sp. Def', 'Speed', 'total']]
-        secondPokemon = pokemon[pokemon['Name'] == pokemon2.capitalize()][['Name' ,'HP', 'Attack', 'Defense', 'Sp. Atk', 'Sp. Def', 'Speed', 'total']]
-        battle = np.concatenate([firstPokemon.drop('Name', axis=1).values, secondPokemon.drop('Name', axis=1).values], axis=1)
+        Poke1 = pokemon[pokemon['Name'] == pokemon1.capitalize()][['Name' ,'HP', 'Attack', 'Defense', 'Sp. Atk', 'Sp. Def', 'Speed', 'result']]
+        Poke2 = pokemon[pokemon['Name'] == pokemon2.capitalize()][['Name' ,'HP', 'Attack', 'Defense', 'Sp. Atk', 'Sp. Def', 'Speed', 'result']]
+        battle = np.concatenate([Poke1.drop('Name', axis=1).values, Poke2.drop('Name', axis=1).values], axis=1)
         prediction = model.predict(battle)[0]
     
-        compare = pd.concat([firstPokemon, secondPokemon])
+        compare = pd.concat([Poke1, Poke2])
 
         # PLOTTING
         plt.figure(figsize=(12,6))

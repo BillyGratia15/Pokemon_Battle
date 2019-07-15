@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>POKEMON BATTLE!!</title>
+    <style>
+        body {background-image:url("https://archive-media-0.nyafuu.org/vp/image/1407/64/1407642465792.png"); 
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover
+        }
+        img, h1, form {text-align: center}
+        .center {display: block ; margin-left: auto; margin-right: auto; width: 40%}
+    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <img src="https://cdn.bulbagarden.net/upload/3/3c/Season8_logo.png" alt="Pokemon Logo" class="center" height="50%" wdith="50%"/>
+    <form action="http://localhost:5000/hasil" method="POST"> 
+        <br><br>
+        <input name="pokemon1" type="text" placeholder="Pokemon 1 ..." width="50%"/><br><br>
+        <button type="button" disabled>🆚</button><br><br>
+        <input name="pokemon2" type="text" placeholder="Pokemon 2 ..." width="50%"/><br><br>
+        <input type="Submit" value="Battle!👊" class="btn btn-danger"/>          
+    </form>    
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

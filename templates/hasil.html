@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>POKEMON BATTLE!!</title>
+        <style>
+            body {background-image:url("https://archive-media-0.nyafuu.org/vp/image/1407/64/1407642465792.png"); 
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover
+            }
+            img, h1, form {text-align: center}
+            .center {display: block ; margin-left: auto; margin-right: auto; width: 40%}
+        </style>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+<body>
+	<center>
+	<h2><img src="{{picture1}}" width="150" height="150">{{name1}} VS {{name2}} <img src="{{picture2}}" width="150" height="150"></h2> 
+	<h2>{{result['prob']}}% {{result['win']}} Wins!</h2>
+	<img src="{{result['graph']}}" align='middle'/>
+	<br>
+	<button onclick="goBack()">Click this button to try another pokemon!</button>
+	<script>
+	function goBack() {
+	window.history.back();
+	}
+	</script>
+	</center>
+</body>
+</html>
